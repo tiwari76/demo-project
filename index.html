@@ -3,64 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beautiful Website</title>
+    <title>World-Class Website</title>
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
+        * {
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            text-align: center;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            text-align: center;
+            overflow: hidden;
         }
         .container {
-            max-width: 800px;
-            background: white;
-            padding: 30px;
+            max-width: 900px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
             border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease-in-out;
         }
         .container:hover {
             transform: scale(1.05);
         }
         h1 {
-            color: #ff6363;
-            font-size: 36px;
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #f8b400;
         }
         p {
-            font-size: 20px;
-            color: #555;
-            margin-bottom: 20px;
+            font-size: 22px;
+            margin-bottom: 25px;
+            opacity: 0.9;
         }
         .btn {
             display: inline-block;
-            padding: 12px 25px;
-            font-size: 20px;
+            padding: 15px 35px;
+            font-size: 22px;
             color: white;
-            background: #ff6363;
+            background: #f8b400;
             border: none;
-            border-radius: 25px;
+            border-radius: 30px;
             cursor: pointer;
             text-decoration: none;
-            box-shadow: 0 4px 8px rgba(255, 99, 99, 0.5);
             transition: background 0.3s, transform 0.3s;
+            box-shadow: 0 5px 15px rgba(248, 180, 0, 0.5);
         }
         .btn:hover {
-            background: #e04e4e;
-            transform: translateY(-3px);
+            background: #d89b00;
+            transform: translateY(-4px);
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <h1>Welcome to My Beautiful Website</h1>
-        <p>This is a stunning, professionally designed webpage perfect for presentations.</p>
-        <a href="#" class="btn">Explore More</a>
+        <h1>Welcome to a World-Class Experience</h1>
+        <p>Experience the elegance of modern design, perfected for any audience.</p>
+        <a href="#" class="btn">Discover More</a>
     </div>
 </body>
 </html>
