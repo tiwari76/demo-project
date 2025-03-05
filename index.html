@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>World-Class Website</title>
+    <title>Happy Birthday Lavannya!</title>
     <style>
         * {
             margin: 0;
@@ -12,252 +12,132 @@
         }
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
-            color: white;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            color: #333;
             text-align: center;
-            overflow-x: hidden;
+            overflow: hidden;
         }
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 10%;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ff69b4;
+            animation: fall 5s linear infinite;
         }
-        .navbar .logo {
-            font-size: 24px;
-            font-weight: 600;
-            color: #f8b400;
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); }
+            100% { transform: translateY(110vh) rotate(720deg); }
         }
-        .navbar .nav-links {
-            list-style: none;
-        }
-        .navbar .nav-links li {
-            display: inline-block;
-            margin: 0 15px;
-        }
-        .navbar .nav-links a {
-            text-decoration: none;
-            color: white;
-            font-size: 18px;
-            transition: color 0.3s;
-        }
-        .navbar .nav-links a:hover {
-            color: #f8b400;
-        }
-        .hero {
-            height: 100vh;
+        .container {
             display: flex;
             justify-content: center;
             align-items: center;
+            height: 100vh;
             flex-direction: column;
             position: relative;
-            overflow: hidden;
-        }
-        .hero video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1;
-        }
-        .hero .container {
-            max-width: 900px;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-            transition: transform 0.3s ease-in-out;
-        }
-        .hero .container:hover {
-            transform: scale(1.05);
+            z-index: 1;
         }
         h1 {
-            font-size: 48px;
+            font-size: 60px;
             margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #f8b400;
+            color: #ff69b4;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
         }
         p {
-            font-size: 22px;
-            margin-bottom: 25px;
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: #333;
             opacity: 0.9;
+        }
+        .cake {
+            width: 150px;
+            height: 150px;
+            background: url('https://i.imgur.com/7QZqy.png') no-repeat center/cover;
+            margin-bottom: 30px;
+            animation: spin 4s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
         .btn {
             display: inline-block;
             padding: 15px 35px;
             font-size: 22px;
             color: white;
-            background: #f8b400;
+            background: #ff69b4;
             border: none;
             border-radius: 30px;
             cursor: pointer;
             text-decoration: none;
             transition: background 0.3s, transform 0.3s;
-            box-shadow: 0 5px 15px rgba(248, 180, 0, 0.5);
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.5);
         }
         .btn:hover {
-            background: #d89b00;
+            background: #ff1493;
             transform: translateY(-4px);
         }
-        .features {
-            padding: 80px 10%;
-            background: rgba(255, 255, 255, 0.05);
-        }
-        .features h2 {
-            font-size: 36px;
-            margin-bottom: 40px;
-            color: #f8b400;
-        }
-        .features .feature-cards {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-        }
-        .features .card {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 30px;
+        .message {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
             border-radius: 15px;
-            width: 30%;
-            margin: 15px;
-            transition: transform 0.3s ease-in-out;
+            max-width: 600px;
+            margin: 20px auto;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
-        .features .card:hover {
-            transform: scale(1.05);
-        }
-        .features .card h3 {
-            font-size: 24px;
-            margin-bottom: 15px;
-            color: #f8b400;
-        }
-        .features .card p {
-            font-size: 18px;
-            opacity: 0.8;
-        }
-        .testimonials {
-            padding: 80px 10%;
-            background: rgba(255, 255, 255, 0.05);
-        }
-        .testimonials h2 {
-            font-size: 36px;
-            margin-bottom: 40px;
-            color: #f8b400;
-        }
-        .testimonials .testimonial-cards {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-        }
-        .testimonials .card {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 30px;
-            border-radius: 15px;
-            width: 30%;
-            margin: 15px;
-            transition: transform 0.3s ease-in-out;
-        }
-        .testimonials .card:hover {
-            transform: scale(1.05);
-        }
-        .testimonials .card p {
-            font-size: 18px;
-            opacity: 0.8;
-            margin-bottom: 15px;
-        }
-        .testimonials .card h4 {
+        .message p {
             font-size: 20px;
-            color: #f8b400;
+            line-height: 1.6;
+            color: #333;
         }
-        footer {
-            padding: 40px 10%;
-            background: rgba(255, 255, 255, 0.1);
-            text-align: center;
-        }
-        footer p {
-            font-size: 18px;
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 16px;
+            color: #333;
             opacity: 0.8;
-        }
-        footer a {
-            color: #f8b400;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        footer a:hover {
-            color: #d89b00;
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="logo">World-Class</div>
-        <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Features</a></li>
-            <li><a href="#">Testimonials</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-    </nav>
+    <!-- Confetti Animation -->
+    <div class="confetti" style="left: 10%; animation-delay: 0s;"></div>
+    <div class="confetti" style="left: 20%; animation-delay: 1s;"></div>
+    <div class="confetti" style="left: 30%; animation-delay: 2s;"></div>
+    <div class="confetti" style="left: 40%; animation-delay: 3s;"></div>
+    <div class="confetti" style="left: 50%; animation-delay: 4s;"></div>
+    <div class="confetti" style="left: 60%; animation-delay: 5s;"></div>
+    <div class="confetti" style="left: 70%; animation-delay: 6s;"></div>
+    <div class="confetti" style="left: 80%; animation-delay: 7s;"></div>
+    <div class="confetti" style="left: 90%; animation-delay: 8s;"></div>
 
-    <section class="hero">
-        <video autoplay muted loop>
-            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <div class="container">
-            <h1>Welcome to a World-Class Experience</h1>
-            <p>Experience the elegance of modern design, perfected for any audience.</p>
-            <a href="#" class="btn">Discover More</a>
+    <!-- Main Content -->
+    <div class="container">
+        <h1>Happy Birthday Lavannya!</h1>
+        <p>Wishing you a day filled with love, joy, and laughter!</p>
+        <div class="cake"></div>
+        <a href="#" class="btn">Celebrate!</a>
+
+        <!-- Personalized Message -->
+        <div class="message">
+            <p>
+                Dear Lavannya,<br><br>
+                On your special day, I wish you all the happiness in the world. May your life be as bright and beautiful as you are. Keep shining and spreading your positivity wherever you go. Have an amazing birthday and a fantastic year ahead! 🎉🎂🎈
+            </p>
         </div>
-    </section>
+    </div>
 
-    <section class="features">
-        <h2>Our Features</h2>
-        <div class="feature-cards">
-            <div class="card">
-                <h3>Feature One</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec erat erat.</p>
-            </div>
-            <div class="card">
-                <h3>Feature Two</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec erat erat.</p>
-            </div>
-            <div class="card">
-                <h3>Feature Three</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec erat erat.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="testimonials">
-        <h2>What Our Clients Say</h2>
-        <div class="testimonial-cards">
-            <div class="card">
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec erat erat."</p>
-                <h4>- Client One</h4>
-            </div>
-            <div class="card">
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec erat erat."</p>
-                <h4>- Client Two</h4>
-            </div>
-            <div class="card">
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec erat erat."</p>
-                <h4>- Client Three</h4>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2023 World-Class. All rights reserved. | <a href="#">Privacy Policy</a></p>
-    </footer>
+    <!-- Footer -->
+    <div class="footer">
+        Made with ❤️ for Lavannya
+    </div>
 </body>
 </html>
