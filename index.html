@@ -12,21 +12,18 @@
         }
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-            color: #333;
+            background: #0f0c29; /* Dark futuristic background */
+            color: white;
             text-align: center;
             overflow: hidden;
         }
-        .confetti {
+        /* Particle Background */
+        #particles-js {
             position: absolute;
-            width: 10px;
-            height: 10px;
-            background: #ff69b4;
-            animation: fall 5s linear infinite;
-        }
-        @keyframes fall {
-            0% { transform: translateY(-10vh) rotate(0deg); }
-            100% { transform: translateY(110vh) rotate(720deg); }
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0f0c29, #302b63);
+            z-index: -1;
         }
         .container {
             display: flex;
@@ -40,18 +37,18 @@
         h1 {
             font-size: 60px;
             margin-bottom: 20px;
-            color: #ff69b4;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-            animation: bounce 2s infinite;
+            color: #00ffcc; /* Futuristic neon color */
+            text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 40px #00ffcc;
+            animation: glow 2s infinite alternate;
         }
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+        @keyframes glow {
+            0% { text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 40px #00ffcc; }
+            100% { text-shadow: 0 0 20px #00ffcc, 0 0 40px #00ffcc, 0 0 80px #00ffcc; }
         }
         p {
             font-size: 28px;
             margin-bottom: 30px;
-            color: #333;
+            color: #fff;
             opacity: 0.9;
         }
         .cake {
@@ -59,41 +56,57 @@
             height: 150px;
             background: url('https://i.imgur.com/7QZqy.png') no-repeat center/cover;
             margin-bottom: 30px;
-            animation: spin 4s linear infinite;
+            animation: float 4s ease-in-out infinite;
         }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
         }
         .btn {
             display: inline-block;
             padding: 15px 35px;
             font-size: 22px;
-            color: white;
-            background: #ff69b4;
+            color: #0f0c29;
+            background: #00ffcc;
             border: none;
             border-radius: 30px;
             cursor: pointer;
             text-decoration: none;
             transition: background 0.3s, transform 0.3s;
-            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.5);
+            box-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc;
         }
         .btn:hover {
-            background: #ff1493;
+            background: #00e6b8;
             transform: translateY(-4px);
         }
         .message {
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.1);
             padding: 20px;
             border-radius: 15px;
             max-width: 600px;
             margin: 20px auto;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
         }
         .message p {
             font-size: 20px;
             line-height: 1.6;
-            color: #333;
+            color: #fff;
+            opacity: 0.9;
+        }
+        .typed-text {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid #00ffcc;
+            animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #00ffcc; }
         }
         .footer {
             position: absolute;
@@ -101,23 +114,17 @@
             left: 50%;
             transform: translateX(-50%);
             font-size: 16px;
-            color: #333;
+            color: #fff;
             opacity: 0.8;
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Particles.js Library -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 </head>
 <body>
-    <!-- Confetti Animation -->
-    <div class="confetti" style="left: 10%; animation-delay: 0s;"></div>
-    <div class="confetti" style="left: 20%; animation-delay: 1s;"></div>
-    <div class="confetti" style="left: 30%; animation-delay: 2s;"></div>
-    <div class="confetti" style="left: 40%; animation-delay: 3s;"></div>
-    <div class="confetti" style="left: 50%; animation-delay: 4s;"></div>
-    <div class="confetti" style="left: 60%; animation-delay: 5s;"></div>
-    <div class="confetti" style="left: 70%; animation-delay: 6s;"></div>
-    <div class="confetti" style="left: 80%; animation-delay: 7s;"></div>
-    <div class="confetti" style="left: 90%; animation-delay: 8s;"></div>
+    <!-- Particle Background -->
+    <div id="particles-js"></div>
 
     <!-- Main Content -->
     <div class="container">
@@ -126,11 +133,12 @@
         <div class="cake"></div>
         <a href="#" class="btn">Celebrate!</a>
 
-        <!-- Personalized Message -->
+        <!-- Personalized Message with Typing Effect -->
         <div class="message">
             <p>
-                Dear Lavannya,<br><br>
+                <span class="typed-text">Dear Lavannya,<br><br>
                 On your special day, I wish you all the happiness in the world. May your life be as bright and beautiful as you are. Keep shining and spreading your positivity wherever you go. Have an amazing birthday and a fantastic year ahead! 🎉🎂🎈
+            </span>
             </p>
         </div>
     </div>
@@ -139,5 +147,12 @@
     <div class="footer">
         Made with ❤️ for Lavannya
     </div>
+
+    <!-- Particles.js Configuration -->
+    <script>
+        particlesJS.load('particles-js', 'particles.json', function() {
+            console.log('Particles.js loaded!');
+        });
+    </script>
 </body>
 </html>
