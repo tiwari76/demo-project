@@ -51,17 +51,6 @@
             color: #fff;
             opacity: 0.9;
         }
-        .cake {
-            width: 150px;
-            height: 150px;
-            background: url('https://i.imgur.com/7QZqy.png') no-repeat center/cover;
-            margin-bottom: 30px;
-            animation: float 4s ease-in-out infinite;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
         .btn {
             display: inline-block;
             padding: 15px 35px;
@@ -117,8 +106,35 @@
             color: #fff;
             opacity: 0.8;
         }
+        /* 3D Canvas */
+        #3d-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        /* AI Chatbot */
+        .chatbot {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+        }
+        .chatbot p {
+            font-size: 16px;
+            margin: 0;
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Three.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- GLTFLoader for 3D Models -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
     <!-- Particles.js Library -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 </head>
@@ -126,11 +142,13 @@
     <!-- Particle Background -->
     <div id="particles-js"></div>
 
+    <!-- 3D Canvas -->
+    <div id="3d-canvas"></div>
+
     <!-- Main Content -->
     <div class="container">
         <h1>Happy Birthday Lavannya!</h1>
         <p>Wishing you a day filled with love, joy, and laughter!</p>
-        <div class="cake"></div>
         <a href="#" class="btn">Celebrate!</a>
 
         <!-- Personalized Message with Typing Effect -->
@@ -143,10 +161,49 @@
         </div>
     </div>
 
+    <!-- AI Chatbot -->
+    <div class="chatbot">
+        <p>🎉 Happy Birthday, Lavannya! 🎂</p>
+    </div>
+
     <!-- Footer -->
     <div class="footer">
         Made with ❤️ for Lavannya
     </div>
+
+    <!-- Three.js Script for 3D Model -->
+    <script>
+        // Set up the scene, camera, and renderer
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.getElementById('3d-canvas').appendChild(renderer.domElement);
+
+        // Add lighting
+        const light = new THREE.DirectionalLight(0xffffff, 1);
+        light.position.set(5, 5, 5).normalize();
+        scene.add(light);
+
+        // Load a 3D model (e.g., a birthday cake)
+        const loader = new THREE.GLTFLoader();
+        loader.load('https://cdn.glitch.global/7e9a5c0b-9b9b-4b9b-9b9b-9b9b9b9b9b9b/birthday_cake.glb', (gltf) => {
+            const model = gltf.scene;
+            model.scale.set(2, 2, 2);
+            model.position.set(0, -1, 0);
+            scene.add(model);
+        });
+
+        // Position the camera
+        camera.position.z = 5;
+
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            renderer.render(scene, camera);
+        }
+        animate();
+    </script>
 
     <!-- Particles.js Configuration -->
     <script>
